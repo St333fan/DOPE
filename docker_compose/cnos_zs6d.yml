@@ -45,7 +45,7 @@ services:
       - NVIDIA_DRIVER_CAPABILITIES=all
     env_file: ../config/ros.env
     command: bash -c "source /opt/ros/noetic/setup.bash; source /root/catkin_ws/devel/setup.bash;
-                      python3 /code/zs6d_ros_wrapper.py"        
+                      python3 /code/zs6d_ros_wrapper.py --config_file ./zs6d_configs/bop_eval_configs/cfg_custom_inference_bop.json"      
     privileged: true
     stdin_open: true
     tty: true
