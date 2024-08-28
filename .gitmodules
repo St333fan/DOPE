@@ -1,12 +1,12 @@
 [submodule "pose_estimators/zs6d_sasha"]
 	path = pose_estimators/zs6d_sasha
-	url = https://github.com/v4r-tuwien/zs6d-sasha.git
+	url = git@github.com:v4r-tuwien/zs6d_sasha.git
 [submodule "pose_estimators/gdrnpp_sasha"]
 	path = pose_estimators/gdrnpp_sasha
-	url = https://github.com/v4r-tuwien/gdrnpp_sasha.git
+	url = git@github.com:v4r-tuwien/gdrnpp_sasha.git
 [submodule "object_detectors/yolov8_sasha"]
 	path = object_detectors/yolov8_sasha
-	url = https://github.com/v4r-tuwien/yolov8_sasha.git
+	url = git@github.com:v4r-tuwien/yolov8_sasha.git
 [submodule "object_detectors/cnos_sasha"]
 	path = object_detectors/cnos_sasha
-	url = https://github.com/haberger/cnos_ros_wrapper.git
+	url = git@github.com:haberger/cnos_ros_wrapper.git
