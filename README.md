@@ -10,7 +10,7 @@ This repository serves as a central hub for multiple object detectors and pose e
 
 To clone this repository with all its submodules:
 ```bash
-git clone --recurse-submodules https://github.com/v4r-tuwien/dope.git
+git clone --recurse-submodules git@github.com:lexihaberl/DOPE.git
 ```
 
 If you have already cloned the repository without the submodules, you can initialize and update them with:
