@@ -15,13 +15,14 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ../object_detectors/cnos_sasha/:/code
       - ../object_detectors/cnos_sasha/torch_cache:/root/.cache/torch
+      - ../datasets/templates:/code/templates
     environment: 
       - DISPLAY
       - QT_X11_NO_MITSHM=1
       - NVIDIA_DRIVER_CAPABILITIES=all
     env_file: ../config/ros.env
     command: bash -c "source /opt/ros/noetic/setup.bash; source /root/catkin_ws/devel/setup.bash;
-                      python cnos_ros_wrapper.py dataset_name=ycbv model=cnos_fast model.onboarding_config.rendering_type=pyrender"
+                      python cnos_custom_ros_wrapper.py --templates_dir /code/templates/ycbv --subset 4"
     stdin_open: true
     tty: true 
 
@@ -36,6 +37,7 @@ services:
       - "../pose_estimators/zs6d_sasha/:/code:rw"
       - "../pose_estimators/zs6d_sasha/torch_cache:/root/.cache/torch:rw"
       - "../datasets/ycbv/models:/code/templates/ycbv/models"
+      - "../datasets/templates:/code/templates"
       - ../config:/root/config
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - /etc/localtime:/etc/localtime:ro
@@ -45,7 +47,7 @@ services:
       - NVIDIA_DRIVER_CAPABILITIES=all
     env_file: ../config/ros.env
     command: bash -c "source /opt/ros/noetic/setup.bash; source /root/catkin_ws/devel/setup.bash;
-                      python3 /code/zs6d_ros_wrapper.py --config_file ./zs6d_configs/bop_eval_configs/cfg_custom_inference_bop.json"      
+                      python3 /code/zs6d_ros_wrapper.py --config_file ./zs6d_configs/bop_eval_configs/cfg_ros_ycbv_inference_bop.json"      
     privileged: true
     stdin_open: true
     tty: true
