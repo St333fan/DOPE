@@ -10,3 +10,6 @@
 [submodule "object_detectors/cnos_sasha"]
 	path = object_detectors/cnos_sasha
 	url = git@github.com:haberger/cnos_ros_wrapper.git
+[submodule "object_detectors/grounded_sam2_ros"]
+	path = object_detectors/grounded_sam2_ros
+	url = git@github.com:v4r-tuwien/grounded_sam2_ros.git
