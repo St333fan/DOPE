@@ -30,7 +30,12 @@ bash scripts/download_ycbv_gdrnpp_weights.sh
 Start the containers with the following command:
 ```bash
 xhost local:docker
-docker-compose -f docker_compose/gdrnpp_yolov8.yml up
+DATASET=ycbv CONFIG=params_sasha.yaml docker-compose -f docker_compose/gdrnpp_yolov8.yml up
+```
+For YCB-ichores:
+```bash
+xhost local:docker
+DATASET=ycb_ichores CONFIG=params_sasha.yaml docker-compose -f docker_compose/gdrnpp_yolov8.yml up
 ```
 
 ### cnos and zs6d
