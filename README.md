@@ -38,6 +38,12 @@ xhost local:docker
 DATASET=ycb_ichores CONFIG=params_sasha.yaml docker-compose -f docker_compose/gdrnpp_yolov8.yml up
 ```
 
+To test Gdr-net:
+```bash
+xhost local:docker
+DATASET=ycbv CONFIG=params_sasha.yaml docker-compose -f docker_compose/gdrnpp_yolov8_test.yml up
+```
+
 ### cnos and zs6d
 Start the containers with the following command:
 ```bash
