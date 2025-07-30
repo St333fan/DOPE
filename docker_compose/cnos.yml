@@ -1,0 +1,27 @@
+version: '2.4'
+services:
+  cnos:
+    image: cnos
+    privileged: true
+    build:
+      context: ../object_detectors/cnos_sasha
+      dockerfile: Dockerfile
+      shm_size: '2gb'
+    shm_size: '2gb'
+    network_mode: "host"
+    runtime: "nvidia"
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ../object_detectors/cnos_sasha/:/code
+      - ../object_detectors/cnos_sasha/torch_cache:/root/.cache/torch
+      - ../datasets/templates:/code/templates
+    environment: 
+      - DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    env_file: ../config/ros.env
+    command: bash -c "source /opt/ros/noetic/setup.bash; source /root/catkin_ws/devel/setup.bash;
+                      python cnos_custom_ros_wrapper.py --templates_dir /code/templates/ycbv --subset 4"
+    stdin_open: true
+    tty: true 
