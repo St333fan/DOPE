@@ -49,4 +49,6 @@ Start the containers with the following command:
 ```bash
 xhost local:docker
 docker-compose -f docker_compose/cnos_zs6d.yml up
+
+docker-compose -f docker_compose/cnos.yml up
 ```
