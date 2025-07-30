@@ -22,6 +22,8 @@ services:
       - NVIDIA_DRIVER_CAPABILITIES=all
     env_file: ../config/ros.env
     command: bash -c "source /opt/ros/noetic/setup.bash; source /root/catkin_ws/devel/setup.bash;
-                      python cnos_custom_ros_wrapper.py --templates_dir /code/templates/ycbv --subset 4"
+                      pip install 'numpy<2';
+                      chmod -R 755 /code/templates;
+                      python cnos_custom_ros_wrapper.py --templates_dir /code/templates_pyrender/ycbv --subset 4"
     stdin_open: true
     tty: true 
