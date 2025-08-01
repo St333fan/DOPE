@@ -52,5 +52,6 @@ docker-compose -f docker_compose/cnos_zs6d.yml up
 
 # no ZS6D
 ## render templates or copy them into the correct folder, my adapt docker-compose or dockerfile
+xhost local:docker
 docker-compose -f docker_compose/cnos.yml up
 ```
