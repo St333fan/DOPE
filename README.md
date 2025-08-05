@@ -45,6 +45,8 @@ DATASET=ycbv CONFIG=params_sasha.yaml docker-compose -f docker_compose/gdrnpp_yo
 ```
 
 ### cnos and zs6d
+Change in ros.env the correct $ROS_IP
+
 Start the containers with the following command:
 ```bash
 xhost local:docker
