@@ -1,0 +1,36 @@
+version: '2.4'
+services:
+  cnos:
+    build:
+      context: ../object_detectors/FoundationPose_sasha
+      dockerfile: Dockerfile
+    image: foundationpose_ros
+    runtime: nvidia
+    privileged: true
+    network_mode: host
+    shm_size: 2gb
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ../object_detectors/FoundationPose_sasha/:/code
+      - ../object_detectors/FoundationPose_sasha/torch_cache:/root/.cache/torch
+      - ../datasets/templates:/code/templates
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    env_file: ../config/ros.env
+    stdin_open: true
+    tty: true
+    command: >
+      bash -c "
+        source /opt/ros/noetic/setup.bash &&
+        source /root/catkin_ws/devel/setup.bash &&
+        pip install 'numpy>=1.24,<2' opencv-python==4.8.1.78 &&
+        chmod -R 755 /code/templates &&
+        python /code/foundationpose_ros_wrapper.py
+      "
