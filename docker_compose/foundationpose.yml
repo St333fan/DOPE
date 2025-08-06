@@ -1,6 +1,6 @@
 version: '2.4'
 services:
-  cnos:
+  foundationpose:
     build:
       context: ../pose_estimators/FoundationPose_sasha
       dockerfile: Dockerfile
