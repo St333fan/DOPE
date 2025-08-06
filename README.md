@@ -59,6 +59,8 @@ docker-compose -f docker_compose/cnos.yml up
 ```
 
 ### FoundationPose
+Go to submodule FoundationPose and download the weights, how to is descriped there
+
 Start the containers with the following command:
 ```bash
 xhost local:docker
