@@ -20,7 +20,6 @@ services:
       - ../pose_estimators/FoundationPose_sasha/torch_cache:/root/.cache/torch:rw
       - ../datasets/ycbv/models:/code/templates/ycbv/models
       - ../datasets/templates:/code/templates
-      - ../datasets/templates:/code/templates
       - /etc/localtime:/etc/localtime:ro
       - ../config:/root/config
     environment:
