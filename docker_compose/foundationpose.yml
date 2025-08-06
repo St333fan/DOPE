@@ -2,7 +2,7 @@ version: '2.4'
 services:
   cnos:
     build:
-      context: ../object_detectors/FoundationPose_sasha
+      context: ../pose_estimators/FoundationPose_sasha
       dockerfile: Dockerfile
     image: foundationpose_ros
     runtime: nvidia
@@ -16,9 +16,13 @@ services:
     volumes:
       - /dev/bus/usb:/dev/bus/usb
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - ../object_detectors/FoundationPose_sasha/:/code
-      - ../object_detectors/FoundationPose_sasha/torch_cache:/root/.cache/torch
+      - ../pose_estimators/FoundationPose_sasha/:/code:rw
+      - ../pose_estimators/FoundationPose_sasha/torch_cache:/root/.cache/torch:rw
+      - ../datasets/ycbv/models:/code/templates/ycbv/models
       - ../datasets/templates:/code/templates
+      - ../datasets/templates:/code/templates
+      - /etc/localtime:/etc/localtime:ro
+      - ../config:/root/config
     environment:
       - DISPLAY=${DISPLAY}
       - QT_X11_NO_MITSHM=1
