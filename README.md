@@ -6,6 +6,8 @@ This repository serves as a central hub for multiple object detectors and pose e
 - smth regarding prepare templates stuff for zs6d
 - smth regarding setup.sh for cnos
 
+Change in ros.env the correct $ROS_IP
+
 ## Cloning the repository
 
 To clone this repository with all its submodules:
@@ -45,8 +47,6 @@ DATASET=ycbv CONFIG=params_sasha.yaml docker-compose -f docker_compose/gdrnpp_yo
 ```
 
 ### cnos and zs6d
-Change in ros.env the correct $ROS_IP
-
 Start the containers with the following command:
 ```bash
 xhost local:docker
@@ -56,4 +56,11 @@ docker-compose -f docker_compose/cnos_zs6d.yml up
 ## render templates or copy them into the correct folder, my adapt docker-compose or dockerfile
 xhost local:docker
 docker-compose -f docker_compose/cnos.yml up
+```
+
+### cnos and zs6d
+Start the containers with the following command:
+```bash
+xhost local:docker
+docker-compose -f docker_compose/foundationpose.yml up
 ```
