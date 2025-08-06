@@ -58,7 +58,7 @@ xhost local:docker
 docker-compose -f docker_compose/cnos.yml up
 ```
 
-### cnos and zs6d
+### FoundationPose
 Start the containers with the following command:
 ```bash
 xhost local:docker
