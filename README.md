@@ -2,7 +2,7 @@
 
 This repository serves as a central hub for multiple object detectors and pose estimators.
 
-- PUT YCBV DATASET IN datasets
+- PUT YCBV DATASET IN datasets https://huggingface.co/datasets/bop-benchmark/ycbv/resolve/main/ycbv_models.zip
 - smth regarding prepare templates stuff for zs6d
 - smth regarding setup.sh for cnos
 
