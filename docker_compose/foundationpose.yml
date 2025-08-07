@@ -35,6 +35,9 @@ services:
         source /opt/ros/noetic/setup.bash &&
         source /root/catkin_ws/devel/setup.bash &&
         pip install 'numpy>=1.24,<2' opencv-python==4.8.1.78 &&
+        pip install transforms3d &&
         chmod -R 755 /code/templates &&
-        python /code/foundationpose_ros_wrapper.py
-      " #exec bash
+        source /opt/ros/noetic/setup.bash &&
+        source /root/catkin_ws/devel/setup.bash &&
+        exec bash
+      " #exec bash          python /code/foundationpose_ros_wrapper.py &&
