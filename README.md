@@ -65,4 +65,9 @@ Start the containers with the following command:
 ```bash
 xhost local:docker
 docker-compose -f docker_compose/foundationpose.yml up
+
+# if run in new window for testing
+source /opt/ros/noetic/setup.bash
+source /root/catkin_ws/devel/setup.bash
+python foundationpose_ros_wrapper.py
 ```
