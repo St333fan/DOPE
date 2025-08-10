@@ -52,7 +52,7 @@ Start the containers with the following command:
 xhost local:docker
 docker-compose -f docker_compose/cnos_zs6d.yml up
 
-# no ZS6D
+# without ZS6D
 ## render templates or copy them into the correct folder, my adapt docker-compose or dockerfile
 xhost local:docker
 docker-compose -f docker_compose/cnos.yml up
@@ -67,7 +67,23 @@ xhost local:docker
 docker-compose -f docker_compose/foundationpose.yml up
 
 # if run in new window for testing
+docker exec -it foundationpose_ros bash # compose
 source /opt/ros/noetic/setup.bash
 source /root/catkin_ws/devel/setup.bash
 python foundationpose_ros_wrapper.py
+```
+
+### SAM-6D
+Go to submodule SAM-6D and download the weights, how to is descriped there
+
+Start the containers with the following command:
+```bash
+xhost local:docker
+docker-compose -f docker_compose/sam6d.yml up
+
+# if run in new window for testing
+docker exec -it sam6d_ros bash # compose
+source /opt/ros/noetic/setup.bash
+source /root/catkin_ws/devel/setup.bash
+python3 # coming
 ```

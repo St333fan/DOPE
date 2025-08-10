@@ -1,0 +1,37 @@
+version: '2.4'
+services:
+  sam6d:
+    build:
+      context: ../pose_estimators/SAM-6D_sasha
+      dockerfile: Dockerfile
+    image: sam6d_ros
+    runtime: nvidia
+    privileged: true
+    network_mode: host
+    shm_size: 2gb
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ../pose_estimators/SAM-6D_sasha/:/code:rw
+      - ../pose_estimators/SAM-6D_sasha/torch_cache:/root/.cache/torch:rw
+      - ../datasets/ycbv/models:/code/templates/ycbv/models
+      - ../datasets/templates:/code/templates
+      - /etc/localtime:/etc/localtime:ro
+      - ../config:/root/config
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    env_file: ../config/ros.env
+    stdin_open: true
+    tty: true
+    command: >
+      bash -c "
+        source /opt/ros/noetic/setup.bash &&
+        source /root/catkin_ws/devel/setup.bash &&
+        exec bash
+      " #exec bash          python /code/foundationpose_ros_wrapper.py &&
