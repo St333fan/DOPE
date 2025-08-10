@@ -16,6 +16,6 @@
 [submodule "pose_estimators/FoundationPose_sasha"]
 	path = pose_estimators/FoundationPose_sasha
 	url = git@github.com:St333fan/FoundationPose_sasha.git
-[submodule "pose_estimators/SAM-6D-sasha"]
-	path = pose_estimators/SAM-6D-sasha
-	url = git@github.com:St333fan/SAM-6D-sasha.git
+[submodule "pose_estimators/SAM-6D_sasha"]
+	path = pose_estimators/SAM-6D_sasha
+	url = git@github.com:St333fan/SAM-6D_sasha.git
