@@ -91,7 +91,13 @@ ycb-v templates SAM-6D -> https://drive.google.com/drive/folders/1fXt5Z6YDPZTJIC
 │           ├── obj_000002
 │           ├── ---
 ```
-
+ adapt pose_estimators/SAM-6D_sasha/configs/cfg_ros_ycbv_inference.json, depending on what objects you want to find
+```python
+   },
+    "object_mapping": {
+    "002_master_chef_can": "obj_000001"
+  },
+```
 Start the containers with the following command:
 ```bash
 xhost local:docker
@@ -103,7 +109,12 @@ docker-compose -f docker_compose/sam6d.yml down
 docker exec -it docker_compose_sam6d_1 bash
 source /opt/ros/noetic/setup.bash
 source /root/catkin_ws/devel/setup.bash
-# run Service
+
+# run Instance Segmentation Service
 cd /code/Instance_Segmentation_Model/
+python3 sam6DISM_ros_wrapper.py
+
+# run Pose Estimation Service
+cd /code/Pose_Estimation_Model/
 python3 sam6DISM_ros_wrapper.py
 ```
