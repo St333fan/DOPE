@@ -77,7 +77,20 @@ python foundationpose_ros_wrapper.py
 ```
 
 ### SAM-6D
-First setup of git and running of docker-compose will take some time; At first startup it downloads model weights.
+First setup of git and running of docker-compose will take some time; At first startup it downloads model weights. Objects and templates needs manual download:
+ycb-v models -> https://huggingface.co/datasets/bop-benchmark/ycbv/resolve/main/ycbv_models.zip
+
+ycb-v templates SAM-6D -> https://drive.google.com/drive/folders/1fXt5Z6YDPZTJICZcywBUhu5rWnPvYAPI
+
+```bash
+├── datasets # create folder in DOPE folder
+│   └── ycbv
+│       ├── models # .ply and .png ycb-b models
+│       └── templates
+│           ├── obj_000001 # templates rendered like described in SAM-6D original git
+│           ├── obj_000002
+│           ├── ---
+```
 
 Start the containers with the following command:
 ```bash
@@ -90,5 +103,7 @@ docker-compose -f docker_compose/sam6d.yml down
 docker exec -it docker_compose_sam6d_1 bash
 source /opt/ros/noetic/setup.bash
 source /root/catkin_ws/devel/setup.bash
-python3 # coming
+# run Service
+cd /code/Instance_Segmentation_Model/
+python3 sam6DISM_ros_wrapper.py
 ```
