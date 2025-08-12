@@ -18,8 +18,8 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ../pose_estimators/SAM-6D_sasha/:/code:rw
       - ../pose_estimators/SAM-6D_sasha/torch_cache:/root/.cache/torch:rw
-      - ../datasets/ycbv/models:/code/templates/ycbv/models
-      - ../datasets/templates:/code/templates
+      - ../datasets/ycbv/models:/code/datasets/ycbv/models
+      - ../datasets/ycbv/templates:/code/datasets/ycbv/templates
       - /etc/localtime:/etc/localtime:ro
       - ../config:/root/config
     environment:
