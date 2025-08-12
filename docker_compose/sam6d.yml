@@ -31,7 +31,47 @@ services:
     tty: true
     command: >
       bash -c "
+        cd Pose_Estimation_Model/model/pointnet2 &&
+        python3 -m pip install --upgrade 'setuptools>=68' 'importlib-metadata>=6' &&
+        python3 -m pip install . &&
+        cd /code &&
+        
+        python3 -m pip install gdown wget hydra-core omegaconf &&
+        
+        cd Instance_Segmentation_Model &&
+        echo 'Current working directory:' && pwd &&
+        echo 'Contents of current directory:' && ls -la &&
+
+        if [ ! -d 'checkpoints/segment-anything' ] || [ ! -d 'checkpoints/FastSAM' ] || [ ! -d 'checkpoints/dinov2' ]; then
+          echo 'Downloading missing Instance Segmentation Model weights...'
+          if [ ! -d 'checkpoints/segment-anything' ]; then
+            echo 'Downloading SAM weights...'
+            python3 download_sam.py
+          fi
+          if [ ! -d 'checkpoints/FastSAM' ]; then
+            echo 'Downloading FastSAM weights...'
+            python3 download_fastsam.py
+          fi
+          if [ ! -d 'checkpoints/dinov2' ]; then
+            echo 'Downloading DINOv2 weights...'
+            python3 download_dinov2.py
+          fi
+        else
+          echo 'Instance Segmentation Model weights already exist, skipping download.'
+        fi &&
+        cd ../ &&
+        cd Pose_Estimation_Model &&
+        echo 'Current working directory:' && pwd &&
+        echo 'Contents of current directory:' && ls -la &&
+
+        if [ ! -d 'checkpoints' ] || [ ! -f 'checkpoints/sam-6d-pem-base.pth' ]; then
+          echo 'Downloading Pose Estimation Model weights...'
+          python3 download_sam6d-pem.py
+        else
+          echo 'Pose Estimation Model weights already exist, skipping download.'
+        fi &&
+        cd ../ &&
         source /opt/ros/noetic/setup.bash &&
         source /root/catkin_ws/devel/setup.bash &&
         exec bash
-      " #exec bash          python /code/foundationpose_ros_wrapper.py &&
+      "
