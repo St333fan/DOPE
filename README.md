@@ -65,24 +65,29 @@ Start the containers with the following command:
 ```bash
 xhost local:docker
 docker-compose -f docker_compose/foundationpose.yml up
+# when ended with problem
+docker-compose -f docker_compose/foundationpose.yml down
+
 
 # if run in new window for testing
-docker exec -it foundationpose_ros bash # compose
+docker exec -it docker_compose_foundationpose_1 bash
 source /opt/ros/noetic/setup.bash
 source /root/catkin_ws/devel/setup.bash
 python foundationpose_ros_wrapper.py
 ```
 
 ### SAM-6D
-Go to submodule SAM-6D and download the weights, how to is descriped there
+First setup of git and running of docker-compose will take some time; At first startup it downloads model weights.
 
 Start the containers with the following command:
 ```bash
 xhost local:docker
 docker-compose -f docker_compose/sam6d.yml up
+# when ended with problem
+docker-compose -f docker_compose/sam6d.yml down
 
 # if run in new window for testing
-docker exec -it sam6d_ros bash # compose
+docker exec -it docker_compose_sam6d_1 bash
 source /opt/ros/noetic/setup.bash
 source /root/catkin_ws/devel/setup.bash
 python3 # coming
