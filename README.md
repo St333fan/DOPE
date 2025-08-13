@@ -106,7 +106,8 @@ docker-compose -f docker_compose/sam6d.yml up
 docker-compose -f docker_compose/sam6d.yml down
 
 # if run in new window for testing
-docker exec -it docker_compose_sam6d_1 bash
+docker exec -it docker_compose-sam6d-1 bash
+# source ROS
 source /opt/ros/noetic/setup.bash
 source /root/catkin_ws/devel/setup.bash
 
@@ -116,5 +117,5 @@ python3 sam6DISM_ros_wrapper.py
 
 # run Pose Estimation Service
 cd /code/Pose_Estimation_Model/
-python3 sam6DISM_ros_wrapper.py
+python3 sam6DPEM_ros_wrapper.py
 ```
