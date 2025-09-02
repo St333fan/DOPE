@@ -70,7 +70,7 @@ docker-compose -f docker_compose/foundationpose.yml down
 
 
 # if run in new window for testing
-docker exec -it docker_compose_foundationpose_1 bash
+docker exec -it docker_compose-foundationpose-1 bash
 source /opt/ros/noetic/setup.bash
 source /root/catkin_ws/devel/setup.bash
 python foundationpose_ros_wrapper.py
