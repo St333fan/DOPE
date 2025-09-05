@@ -56,6 +56,8 @@ docker-compose -f docker_compose/cnos_zs6d.yml up
 ## render templates or copy them into the correct folder, my adapt docker-compose or dockerfile
 xhost local:docker
 docker-compose -f docker_compose/cnos.yml up
+# if run in new window for testing
+docker exec -it docker_compose-cnos-1 bash
 ```
 
 ### FoundationPose
@@ -70,7 +72,7 @@ docker-compose -f docker_compose/foundationpose.yml down
 
 
 # if run in new window for testing
-docker exec -it docker_compose_foundationpose_1 bash
+docker exec -it docker_compose-foundationpose-1 bash
 source /opt/ros/noetic/setup.bash
 source /root/catkin_ws/devel/setup.bash
 python foundationpose_ros_wrapper.py
