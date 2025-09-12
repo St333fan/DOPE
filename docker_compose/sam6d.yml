@@ -18,8 +18,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ../pose_estimators/SAM-6D_sasha/:/code:rw
       - ../pose_estimators/SAM-6D_sasha/torch_cache:/root/.cache/torch:rw
-      - ../datasets/ycbv/models:/code/datasets/ycbv/models
-      - ../datasets/ycbv/templates:/code/datasets/ycbv/templates
+      - ../datasets:/code/datasets
       - /etc/localtime:/etc/localtime:ro
       - ../config:/root/config
     environment:
@@ -71,7 +70,9 @@ services:
           echo 'Pose Estimation Model weights already exist, skipping download.'
         fi &&
         cd ../ &&
+        pip install transforms3d &&
         source /opt/ros/noetic/setup.bash &&
         source /root/catkin_ws/devel/setup.bash &&
+        echo 'Docker Ready, open ISM and PEM in other terminals'&&
         exec bash
       "

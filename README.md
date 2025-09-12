@@ -51,9 +51,25 @@ Start the containers with the following command:
 ```bash
 xhost local:docker
 docker-compose -f docker_compose/cnos_zs6d.yml up
+```
 
-# without ZS6D
-## render templates or copy them into the correct folder, my adapt docker-compose or dockerfile
+```bash
+# without ZS6D just but your templates under
+## render templates or copy; rendering can be found in CNOS submodule
+├── datasets
+│   ├── templates
+│   │   ├── templates_pyrender
+│   │   │   ├── manibot
+│   │   │   │   └── obj_000001
+│   │   │   └── ycbv
+│   │   │       ├── obj_000001
+│   │   │       ├── obj_000002
+│   │   │       ├── obj_000003
+
+```
+Start the containers with the following command:
+```bash
+# adapted docker-compose or dockerfile
 xhost local:docker
 docker-compose -f docker_compose/cnos.yml up
 # if run in new window for testing
@@ -100,12 +116,18 @@ ycb-v templates SAM-6D -> https://drive.google.com/drive/folders/1fXt5Z6YDPZTJIC
     "002_master_chef_can": "obj_000001"
   },
 ```
+#### Rendering of Custom Objects is descriped in Submodule
+
 Start the containers with the following command:
 ```bash
 xhost local:docker
 docker-compose -f docker_compose/sam6d.yml up
 # when ended with problem
 docker-compose -f docker_compose/sam6d.yml down
+
+# install
+pip install "numpy<1.24"
+pip install transforms3d
 
 # if run in new window for testing
 docker exec -it docker_compose-sam6d-1 bash
