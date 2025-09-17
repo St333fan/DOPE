@@ -24,7 +24,7 @@ services:
     command: bash -c "source /opt/ros/noetic/setup.bash; source /root/catkin_ws/devel/setup.bash;
                       pip install 'numpy>=1.24,<2' opencv-python==4.8.1.78;
                       chmod -R 755 /code/datasets;
-                      python cnos_custom_ros_wrapper.py --templates_dir /code/datasets/templates/templates_pyrender --subset 4;
+                      python cnos_custom_ros_wrapper.py --templates_dir /code/datasets/templates_pyrender --subset 4;
                       exec bash"
     stdin_open: true
     tty: true 
