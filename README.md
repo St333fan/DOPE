@@ -125,12 +125,13 @@ docker-compose -f docker_compose/sam6d.yml up
 # when ended with problem
 docker-compose -f docker_compose/sam6d.yml down
 
+# if run in new window for testing
+docker exec -it docker_compose-sam6d-1 bash
+
 # install
 pip install "numpy<1.24"
 pip install transforms3d
 
-# if run in new window for testing
-docker exec -it docker_compose-sam6d-1 bash
 # source ROS
 source /opt/ros/noetic/setup.bash
 source /root/catkin_ws/devel/setup.bash
