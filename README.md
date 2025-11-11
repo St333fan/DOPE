@@ -53,6 +53,7 @@ xhost local:docker
 docker-compose -f docker_compose/cnos_zs6d.yml up
 ```
 
+### CNOS
 ```bash
 # without ZS6D just but your templates under
 ## render templates or copy; rendering can be found in CNOS submodule
@@ -65,15 +66,20 @@ docker-compose -f docker_compose/cnos_zs6d.yml up
 │   │   │       ├── obj_000001
 │   │   │       ├── obj_000002
 │   │   │       ├── obj_000003
-
 ```
 Start the containers with the following command:
 ```bash
-# adapted docker-compose or dockerfile
+# adapted docker-compose or dockerfile for cnos only 
 xhost local:docker
 docker-compose -f docker_compose/cnos.yml up
+
 # if run in new window for testing
 docker exec -it docker_compose-cnos-1 bash
+# source ROS
+source /opt/ros/noetic/setup.bash
+source /root/catkin_ws/devel/setup.bash
+
+python /code/cnos_custom_ros_wrapper.py --templates_dir /code/datasets/templates_pyrender --conf_threshold 0.5
 ```
 
 ### FoundationPose
@@ -91,7 +97,7 @@ docker-compose -f docker_compose/foundationpose.yml down
 docker exec -it docker_compose-foundationpose-1 bash
 source /opt/ros/noetic/setup.bash
 source /root/catkin_ws/devel/setup.bash
-python foundationpose_ros_wrapper.py
+python foundationpose_ros_wrapper.py --config_file ./foundationpose_configs/cfg_ros_ycbv_inference.json
 ```
 
 ### SAM-6D
@@ -138,9 +144,9 @@ source /root/catkin_ws/devel/setup.bash
 
 # run Instance Segmentation Service
 cd /code/Instance_Segmentation_Model/
-python3 sam6DISM_ros_wrapper.py
+python3 sam6DISM_ros_wrapper.py --config_file /code/configs/cfg_ros_ycbv_inference.json 
 
 # run Pose Estimation Service
 cd /code/Pose_Estimation_Model/
-python3 sam6DPEM_ros_wrapper.py
+python3 sam6DPEM_ros_wrapper.py --config_file /code/configs/cfg_ros_ycbv_inference.json 
 ```
