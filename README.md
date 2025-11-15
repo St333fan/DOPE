@@ -79,7 +79,7 @@ docker exec -it docker_compose-cnos-1 bash
 source /opt/ros/noetic/setup.bash
 source /root/catkin_ws/devel/setup.bash
 
-python /code/cnos_custom_ros_wrapper.py --templates_dir /code/datasets/templates_pyrender --conf_threshold 0.5
+python /code/cnos_custom_ros_wrapper.py --templates_dir /code/datasets/templates_pyrender --conf_threshold 0.35
 ```
 
 ### FoundationPose
@@ -97,6 +97,7 @@ docker-compose -f docker_compose/foundationpose.yml down
 docker exec -it docker_compose-foundationpose-1 bash
 source /opt/ros/noetic/setup.bash
 source /root/catkin_ws/devel/setup.bash
+export PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:128
 python foundationpose_ros_wrapper.py --config_file ./foundationpose_configs/cfg_ros_ycbv_inference.json
 ```
 
